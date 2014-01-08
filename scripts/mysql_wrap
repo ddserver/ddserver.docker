@@ -1,0 +1,15 @@
+#! /bin/sh
+
+# Start a temporary mysql instance
+/usr/bin/mysqld_safe --nowatch
+
+# Wait untils mysql server comes up
+while ! /usr/sbin/mysqladmin -u root --count=1 ping 2> /dev/null; do
+  sleep 1s
+done
+
+# Execute the wrapped command
+eval ${*}
+
+# Shut temporary msql instance down
+/usr/sbin/mysqladmin -u root shutdown

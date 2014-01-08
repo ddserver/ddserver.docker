@@ -1,0 +1,4 @@
+[submodule "ddserver"]
+	path = ddserver
+	url = git@github.com:ddserver/ddserver.git
+	branch = 0.2-dev
